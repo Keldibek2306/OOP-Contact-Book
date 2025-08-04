@@ -52,7 +52,24 @@ class ContactBook:
         pass
 
     def update_contact(self):
-        pass
+        self.print_contacts()
+
+        contact_id = input("Contact ID: ")
+        contact = self.db.get_contact(contact_id)
+        if contact:
+            name = input("Name: ").strip().title()
+            phone = input("Phone: ").strip()
+            email = input("Email: ").strip()
+
+            data = {
+                'name': name,
+                'phone': phone,
+                'email': email
+            }
+            self.db.update_contact(contact, data)
+            print("Contact Update qilindi.")
+        else:
+            print("Bunday ID dagi contact mavjud emas.")
 
     def search_contact(self):
         search = input("Search: ").strip().lower()
@@ -87,3 +104,5 @@ class ContactBook:
                 self.print_contacts()
             elif choice == '3':
                 self.search_contact()
+            elif choice == '4':
+                self.update_contact()
