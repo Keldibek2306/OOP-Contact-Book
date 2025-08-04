@@ -49,7 +49,13 @@ class ContactBook:
         self.console.print(table)
 
     def remove_contact(self):
-        pass
+        self.print_contacts()
+
+        contact_id = input("Contact ID: ")
+        if self.db.remove_contact(contact_id):
+            print("contact ochirildi")
+        else:
+            print("bunday contact mavjud emas")
 
     def update_contact(self):
         self.print_contacts()
@@ -106,3 +112,5 @@ class ContactBook:
                 self.search_contact()
             elif choice == '4':
                 self.update_contact()
+            elif choice == '5':
+                self.remove_contact()

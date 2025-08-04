@@ -47,3 +47,13 @@ class DB:
                 item.email = data.get("email")
 
         self.save_contacts()
+
+    def remove_contact(self, contact_id: str) -> bool:
+        contact = self.get_contact(contact_id)
+
+        if contact:
+            self.contacts.remove(contact)
+            self.save_contacts()
+            return True
+        else:
+            return False
