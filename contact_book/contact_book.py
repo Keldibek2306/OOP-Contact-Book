@@ -1,7 +1,6 @@
-import json
+import sys
 from rich.console import Console
 from rich.table import Table
-from contact_book.models.contact import Contact
 from contact_book.services.db import DB
 
 
@@ -98,6 +97,9 @@ class ContactBook:
 
         self.console.print(table)
 
+    def quit(self):
+        sys.exit(0)
+
     def run(self):
         print("salom, Contact Book Projectga Xush Kelibsiz!")
         while True:
@@ -114,3 +116,7 @@ class ContactBook:
                 self.update_contact()
             elif choice == '5':
                 self.remove_contact()
+            elif choice == '6':
+                self.quit()
+            else:
+                print("xato choice")
